@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+
+body{
+    background-color: #f2f2f2;
+}
+
+::selection{
+    background-color: rgb(178, 152, 0);
+    color: #fff;
+}
+
+.chatbot-toggler{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    background-color: #0046c8;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.chatbot-toggler::before,.chatbot-toggler::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0046c8;
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.chatbot-toggler::before{
+    animation: animate 3s ease-out infinite;
+}
+
+.chatbot-toggler::after{
+    animation: animate 3s ease-out 1s infinite;
+}
+
+@keyframes animate {
+        100%{
+            transform: scale(2);
+            opacity: 0;
+        }
+}
+
+.show-chatbot .chatbot-toggler{
+    transform: rotate(90deg);
+}
+.chatbot-toggler span{
+    position: absolute;
+}
+
+.show-chatbot .chatbot-toggler span:first-child,
+.chatbot-toggler span:last-child{
+    opacity: 0;
+}
+
+.show-chatbot .chatbot-toggler span:last-child{
+    opacity: 1;
+}
+
+.show-chatbot .chatbot-toggler::before{
+    animation: none;
+}
+
+.show-chatbot .chatbot-toggler::after{
+    animation: none;
+}
+
+.chatbot{
+    width: 500px;
+    position: fixed;
+    right: 50px;
+    bottom: 120px;
+    background-color: #0042bc;
+    border-radius: 20px;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    transform: scale(0.5);
+    transform-origin: bottom right;
+    transition: all 0.1s ease;
+    box-shadow: 0px 0px 12px #000;
+}
+
+.show-chatbot .chatbot{
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+.title{
+    color: #edf1f3;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 10px #000;
+}
+
+.chat{
+    width: 460px;
+    height: 400px;
+    background:#0046c8 url("images/ciglibelediye_logo.png") no-repeat center;
+    border: 2px solid #a0ffff;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 10px; 
+    overflow-y: scroll;
+    box-shadow: 0px 0px 5px #000;
+}
+
+@media (max-width: 550px){
+    .chatbot{
+        width: 80%;
+    }
+    .chat{
+        width: 100%;
+    }
+}
+
+.message{
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.user{
+    justify-content: flex-end;
+}
+
+.bot{
+    justify-content: flex-start;
+}
+
+.avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.user .avatar{
+    background: url("images/avatar.png");
+    background-size: cover;
+    border: 1px solid #000;
+    order: 2;
+    box-shadow: 0px 0px 7px #000;
+}
+
+.bot .avatar{
+    background: url("images/bot.jpg");
+    background-size: cover;
+    border: 1px solid #000;
+    order: 1;
+    box-shadow: 0px 0px 7px #000;
+}
+
+.text{
+    max-width: 70%;
+    font-size: 16px;
+    background-color: rgba(0, 255, 225, 0.9);
+    color: #000;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #8296d0;
+    box-shadow: 0px 0px 7px #000;
+}
+
+.text a{
+    text-decoration: none;
+    color: blue;
+}
+
+.text a:hover{
+    text-decoration: underline;
+}
+
+.text a:visited{
+    color: blue;
+}
+
+.input{
+    width: 100%;
+    position: relative;
+    font-size: 20px;
+    border: 2px solid #cbcbce;
+    border-radius: 5px;
+    outline: none;
+    padding: 10px;
+}
+
+.input:focus{
+    color: #1e1f1f;
+    border-color: #8296d0;
+    outline: 3px solid #40a8e9;
+    outline-offset: 2px;
+}
+
+.button{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin-top: 0.02rem;
+    margin-left: -3.2rem;
+    padding: 1px;
+    background-color: #fff;
+    color: #0046c8;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+button i{
+    font-size: 3rem;
+}
+
+.button:hover{
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.chat::-webkit-scrollbar{
+    width: 10px;
+}
+
+.chat::-webkit-scrollbar-thumb{
+    background-color: #40a8e9;
+    border-radius: 10px;
+}
